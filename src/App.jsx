@@ -5,12 +5,38 @@ import ButtonGroup from './ButtonGroup.jsx';
 import styles from './styles/App.module.css';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.formValues = React.createRef();
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleFormReset = this.handleFormReset.bind(this);
+  }
+
+  handleFormSubmit() {
+    const form = this.formValues.current;
+    const formData = new FormData(form);
+    const resultFormData = {};
+    for (const [key, value] of formData.entries()) {
+      resultFormData[key] = value;
+    }
+    alert(JSON.stringify(resultFormData));
+  }
+
+  handleFormReset() {
+    this.formValues.current.reset();
+  }
+
   render() {
     return (
       <div className={styles.container}>
         <div className={styles.content}>
           <h1 className={styles.title}>Cоздание анкеты</h1>
-          <div className={styles.form}>
+          <form
+            ref={this.formValues}
+            onSubmit={this.handleFormSubmit}
+            onReset={this.handleFormReset}
+            className={styles.form}
+          >
             <FormInput name="name" label="Имя" placeholder="Александра" />
             <FormInput name="surname" label="Фамилия" placeholder="Александрова" />
             <FormInput type="date" name="birthday" label="Дата рождения" placeholder="01.01.1991" />
@@ -20,7 +46,7 @@ class App extends React.Component {
             <MultiLineInput name="tech-stack" label="Стек технологий" placeholder="JS, CSS, React, ..." />
             <MultiLineInput name="last-project" label="Описание последнего проекта" placeholder="Я реализовала" />
             <ButtonGroup />
-          </div>
+          </form>
         </div>
       </div>
     );

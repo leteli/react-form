@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './styles/FormInput.module.css';
 
 class FormInput extends React.Component {
-
   render() {
     return (
       <div className={styles.wrapper}>

@@ -5,8 +5,8 @@ class ButtonGroup extends React.Component {
   render() {
     return (
       <div className={styles.buttons}>
-        <button className={styles.cancel}>Отменить</button>
-        <button className={styles.send}>Отправить</button>
+        <button type="reset" className={styles.cancel}>Отменить</button>
+        <button type="submit" className={styles.send}>Cохранить</button>
       </div>
     );
   }
