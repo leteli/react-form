@@ -1,0 +1,27 @@
+.buttons {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.send,
+.cancel {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 18px;
+
+  font-family: inherit;
+  font-size: 20px;
+}
+
+.send {
+  color: var(--white);
+  background-color: var(--blue);
+}
+
+.cancel {
+  border: 1px solid var(--gray);
+  color: var(--gray);
+  background-color: inherit;
+}
