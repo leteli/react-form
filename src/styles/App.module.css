@@ -26,6 +26,8 @@
 
   font-weight: 300;
   font-size: 36px;
+
+  text-decoration: underline var(--blue);
 }
 
 .form {
