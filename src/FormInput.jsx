@@ -6,12 +6,15 @@ const FormInput = (props) => {
     <>
       <label htmlFor={props.name}>{props.label}</label>
       <input
+        onChange={props.inputHandler}
+        value={props.state.value}
         className={styles.input}
         type={props.type ?? "text"}
         id={props.name}
         name={props.name}
         placeholder={props.placeholder}
       />
+      { props.state.isValid === false ? <div>{ props.state.message }</div> : null }
     </>
   );
 };
