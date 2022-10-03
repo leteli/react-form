@@ -18,6 +18,10 @@ const validate = (name, currentValue) => {
         regex: /^[A-ZА-Я]/g,
         errorMessage: 'Первая буква должна быть заглавной',
     },
+    birthday: {
+      regex: /^[0-9]{4}-[0-9]{2}-[0-9]{2}/g,
+      errorMessage: 'Неверный формат даты',
+    },
     phone: {
         regex: /^[0-9]{9}$/g,
         errorMessage: 'Номер телефона должен содержать 9 цифр',
@@ -28,10 +32,17 @@ const validate = (name, currentValue) => {
     },
   };
 
-  if (value.search(regexes[name].regex) !== -1) {
-    return { isValid: true, message: null };
+  if (name === 'birthday') {
+    const [year, month, day] = value.split('-');
+    if (year < 1900 || year > 2022 || month > 12 || day > 31) {
+      return { isValid: false, message: 'Неверный формат даты' };
+    }
   }
-  return { isValid: false, message: regexes[name].errorMessage };
+  if (value.search(regexes[name].regex) === -1) {
+    return { isValid: false, message: regexes[name].errorMessage };
+  }
+
+  return { isValid: true, message: null };
 };
 
 export const validateIfEmpty = (inputState) => {
