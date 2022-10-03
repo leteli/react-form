@@ -4,6 +4,7 @@ import MultiLineInput from './MultiLineInput.jsx';
 import ButtonGroup from './ButtonGroup.jsx';
 import styles from './styles/App.module.css';
 import validate, { validateTextarea, isTextarea, validateIfEmpty } from './validate.js';
+import phoneOutputFormat from './phoneFormat.js';
 
 const App = () => {
   const initialData = {value: '', isValid: null, message: null };
@@ -20,7 +21,11 @@ const App = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (isTextarea(name)) {
+    if (name === 'phone') {
+      const formattedPhone = phoneOutputFormat(values, value);
+      setValues((state) => ({ ...state, phone: { ...state.phone, value: formattedPhone}}));
+
+    } else if (isTextarea(name)) {
       const validationResult = validateTextarea(value, 600);
       setValues((state) => ({ ...state, [name]: { ...state[name], value, ...validationResult } }));
     } else {
@@ -29,7 +34,6 @@ const App = () => {
   };
 
   const handleFormSubmit = (e) => {
-    console.log('hey');
     const validatedData = {};
     for (const key in values) {
       const { value } = values[key];
@@ -40,7 +44,6 @@ const App = () => {
         validatedData[key] = { ...validationResult, value };
       }
     }
-    console.log(validatedData);
     setValues(validatedData);
     if (Object.values(values).every((input) => input.isValid)) {
       alert(JSON.stringify(values));
