@@ -1,0 +1,17 @@
+.title {
+  margin: 0 0 1rem;
+
+  font-weight: 300;
+  font-size: 36px;
+
+  text-decoration: underline var(--blue);
+}
+
+.field {
+  text-align: left;
+}
+
+.field > span {
+  margin-right: 10px;
+  color: var(--blue);
+}
