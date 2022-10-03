@@ -1,13 +1,8 @@
 const validate = (name, currentValue) => {
-  const value = currentValue.trim(); // только для инпутов
+  const value = currentValue.trim();
   if (value === '') {
-    return { isValid: false, message: 'Поле пустое. Заполните, пожалуйста' }
+    return { value, isValid: false, message: 'Поле пустое. Заполните, пожалуйста' }
   }
-
-  // const textareaNames = ['personal', 'techStack', 'lastProject'];
-  // if (textareaNames.includes(name)) {
-  //   return validateTextarea(value, 600);
-  // }
 
   const regexes = {
     name: { 
@@ -23,7 +18,7 @@ const validate = (name, currentValue) => {
       errorMessage: 'Неверный формат даты',
     },
     phone: {
-        regex: /^[0-9]{9}$/g,
+        regex: /^[0-9]{1}-[0-9]{4}-[0-9]{2}-[0-9]{2}$/g,
         errorMessage: 'Номер телефона должен содержать 9 цифр',
     },
     website: {
@@ -35,22 +30,22 @@ const validate = (name, currentValue) => {
   if (name === 'birthday') {
     const [year, month, day] = value.split('-');
     if (year < 1900 || year > 2022 || month > 12 || day > 31) {
-      return { isValid: false, message: 'Неверный формат даты' };
+      return { value, isValid: false, message: 'Неверный формат даты' };
     }
   }
   if (value.search(regexes[name].regex) === -1) {
-    return { isValid: false, message: regexes[name].errorMessage };
+    return { value, isValid: false, message: regexes[name].errorMessage };
   }
 
-  return { isValid: true, message: null };
+  return { value, isValid: true, message: null };
 };
 
-export const validateIfEmpty = (inputState) => {
+export const validateTextareaOnSubmit = (inputState) => {
   const { value } = inputState;
   if (value === '') {
     return { value, isValid: false, message: 'Поле пустое. Заполните, пожалуйста' };
   } else {
-    return inputState;
+    return { ...inputState, value: value.trim() };
   }
 };
 

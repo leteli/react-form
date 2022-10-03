@@ -9,4 +9,12 @@ const phoneOutputFormat = (state, value) => {
   return value;
 };
 
+// export const stateOutputFormat = (state) => {
+//   const result = {};
+//   for (const inputName in state) {
+//     result[inputName] = state[inputName].value;
+//   }
+//   return result;
+// };
+
 export default phoneOutputFormat;
