@@ -4,6 +4,7 @@ import FilledForm from './FilledForm.jsx';
 import FormInput from './FormInput.jsx';
 import MultiLineInput from './MultiLineInput.jsx';
 import ButtonGroup from './ButtonGroup.jsx';
+import ReturnButton from './ReturnButton.jsx';
 
 import styles from '../styles/Form.module.css';
 import layout from '../styles/Layout.module.css';
@@ -78,7 +79,12 @@ const Form = () => {
     <>
       { isValid ? <FilledForm state={values} /> : (
       <Layout>
-        <h1 className={layout.title}>Cоздание анкеты</h1>
+        <div className={styles.contentHeader}>
+          <ReturnButton />
+          <div className={styles.titleWrapper}>
+            <h1 className={layout.title}>Cоздание анкеты</h1>
+          </div>
+        </div>
         <form
           onSubmit={handleFormSubmit}
           onReset={handleFormReset}
