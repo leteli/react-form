@@ -4,8 +4,8 @@ import styles from '../styles/ButtonGroup.module.css';
 const ButtonGroup = () => {
   return (
     <div className={styles.buttons}>
-      <button type="reset" className={styles.cancel}>Отменить</button>
-      <button type="submit" className={styles.send}>Cохранить</button>
+      <button type="reset" className={styles.basic}>Отменить</button>
+      <button type="submit" className={styles.primary}>Cохранить</button>
     </div>
   );
 };

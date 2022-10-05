@@ -4,7 +4,10 @@ import FilledForm from './FilledForm.jsx';
 import FormInput from './FormInput.jsx';
 import MultiLineInput from './MultiLineInput.jsx';
 import ButtonGroup from './ButtonGroup.jsx';
+
 import styles from '../styles/Form.module.css';
+import layout from '../styles/Layout.module.css';
+
 import validate, { validateTextarea, isTextarea, validateTextareaOnSubmit } from '../validate.js';
 import phoneOutputFormat from '../phoneFormat.js';
 
@@ -72,10 +75,10 @@ const Form = () => {
   };
   
   return (
-    <div className={styles.container}>
+    <>
       { isValid ? <FilledForm state={values} /> : (
       <Layout>
-        <h1 className={styles.title}>Cоздание анкеты</h1>
+        <h1 className={layout.title}>Cоздание анкеты</h1>
         <form
           onSubmit={handleFormSubmit}
           onReset={handleFormReset}
@@ -94,7 +97,7 @@ const Form = () => {
         </form>
       </Layout>
       )}
-    </div>
+    </>
   );
 };
 

@@ -18,3 +18,12 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   background-color: var(--white);
 }
+
+.title {
+  margin: 0 0 1rem;
+
+  font-weight: 300;
+  font-size: 36px;
+
+  text-decoration: underline var(--blue);
+}

@@ -6,8 +6,7 @@
   margin-top: 1.5rem;
 }
 
-.send,
-.cancel {
+.btn {
   width: 100%;
   border: none;
   border-radius: 10px;
@@ -17,12 +16,14 @@
   font-size: 20px;
 }
 
-.send {
+.primary {
+  composes: btn;
   color: var(--white);
   background-color: var(--blue);
 }
 
-.cancel {
+.basic {
+  composes: btn;
   color: var(--white);
   background-color: var(--light-gray);
 }
