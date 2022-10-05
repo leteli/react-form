@@ -1,0 +1,19 @@
+.title {
+  margin: 0 0 1rem;
+
+  font-weight: 300;
+  font-size: 36px;
+
+  text-decoration: underline var(--blue);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+}
+
+.form label {
+  color: var(--blue);
+}
