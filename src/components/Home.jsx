@@ -9,11 +9,7 @@ const Home = () => {
     <Layout>
       <h1 className={layout.title}>Анкета разработчика</h1>
       <p className={styles.text}>Простое приложение для создания CV</p>
-      <div className={styles.btnWrapper}>
-        <button className={button.primary}>
-          <Link to="/form">Заполнить</Link>
-        </button>
-      </div>
+        <Link className={button.fill} to="/form">Заполнить</Link>
     </Layout>
   );
 };

@@ -27,3 +27,9 @@
   color: var(--white);
   background-color: var(--light-gray);
 }
+
+.fill {
+  composes: primary;
+  width: 50%;
+  text-align: center;
+}
