@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles/FormInput.module.css';
+import styles from '../styles/FormInput.module.css';
 
 const FormInput = (props) => {
   return (

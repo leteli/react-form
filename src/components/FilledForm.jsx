@@ -1,10 +1,11 @@
-import styles from './styles/FilledForm.module.css';
+import styles from '../styles/FilledForm.module.css';
+import Layout from './Layout.jsx';
+
 
 const FilledForm = (props) => {
-  console.log(props.state);
   const { name, surname, birthday, phone, website, personal, techStack, lastProject } = props.state;
   return (
-    <div className={props.className}>
+    <Layout>
       <h1 className={styles.title}>{`${name.value} ${surname.value}`}</h1>
       <div>
         <p className={styles.field}><span>Дата рождения:</span>{birthday.value}</p>
@@ -14,7 +15,7 @@ const FilledForm = (props) => {
         <p className={styles.field}><span>Стек технологий:</span>{techStack.value}</p>
         <p className={styles.field}><span>Описание последнего проекта:</span>{lastProject.value}</p>
       </div>
-    </div>
+    </Layout>
   );
 };
 

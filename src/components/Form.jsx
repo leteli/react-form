@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import Layout from './Layout.jsx';
 import FilledForm from './FilledForm.jsx';
 import FormInput from './FormInput.jsx';
 import MultiLineInput from './MultiLineInput.jsx';
 import ButtonGroup from './ButtonGroup.jsx';
-import styles from './styles/App.module.css';
-import validate, { validateTextarea, isTextarea, validateTextareaOnSubmit } from './validate.js';
-import phoneOutputFormat from './phoneFormat.js';
+import styles from '../styles/Form.module.css';
+import validate, { validateTextarea, isTextarea, validateTextareaOnSubmit } from '../validate.js';
+import phoneOutputFormat from '../phoneFormat.js';
 
-const App = () => {
+const Form = () => {
   const initialData = {value: '', isValid: null, message: null };
   const inputNames = ['name', 'surname', 'birthday', 'phone', 'website', 'personal', 'techStack', 'lastProject'];
   const initialState = {};
@@ -72,8 +73,8 @@ const App = () => {
   
   return (
     <div className={styles.container}>
-      { isValid ? <FilledForm state={values} className={styles.content} /> : (
-      <div className={styles.content}>
+      { isValid ? <FilledForm state={values} /> : (
+      <Layout>
         <h1 className={styles.title}>Cоздание анкеты</h1>
         <form
           onSubmit={handleFormSubmit}
@@ -91,10 +92,10 @@ const App = () => {
           <MultiLineInput inputHandler={handleChange} state={values.lastProject} name="lastProject" label="Описание последнего проекта" placeholder="Я реализовала..." />
           <ButtonGroup />
         </form>
-      </div>
+      </Layout>
       )}
     </div>
   );
 };
 
-export default App;
+export default Form;

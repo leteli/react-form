@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles/ButtonGroup.module.css';
+import styles from '../styles/ButtonGroup.module.css';
 
 const ButtonGroup = () => {
   return (
