@@ -9,7 +9,7 @@ const Home = () => {
     <Layout>
       <h1 className={layout.title}>Анкета разработчика</h1>
       <p className={styles.text}>Простое приложение для создания CV</p>
-        <Link className={button.fill} to="/form">Заполнить</Link>
+        <Link className={button.fill} to="/react-form/form">Заполнить</Link>
     </Layout>
   );
 };

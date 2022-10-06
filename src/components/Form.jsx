@@ -77,7 +77,7 @@ const Form = ({ values, setValues }) => {
   
   return (
     <>
-      { isValid ? <Navigate to="/info" /> : (
+      { isValid ? <Navigate to="/react-form/info" /> : (
       <Layout>
         <div className={layout.contentHeader}>
           <ReturnButton />

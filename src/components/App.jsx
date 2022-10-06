@@ -13,9 +13,9 @@ const App = () => {
   const [values, setValues] = useState(initialState);
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/form" element={<Form values={values} setValues={setValues}/>} />
-      <Route path="/info" element={<FilledForm state={values}/>} />
+      <Route path="/react-form" element={<Home />} />
+      <Route path="/react-form/form" element={<Form values={values} setValues={setValues}/>} />
+      <Route path="/react-form/info" element={<FilledForm state={values}/>} />
       <Route path="/*" element={<NotFound />}/>
     </Routes>
   );
