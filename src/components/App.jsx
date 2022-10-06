@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './Home.jsx';
 import Form from './Form.jsx';
 import FilledForm from './FilledForm.jsx';
+import NotFound from './NotFound.jsx';
 
 const App = () => {
   const initialData = {value: '', isValid: null, message: null };
@@ -15,6 +16,7 @@ const App = () => {
       <Route path="/" element={<Home />} />
       <Route path="/form" element={<Form values={values} setValues={setValues}/>} />
       <Route path="/info" element={<FilledForm state={values}/>} />
+      <Route path="/*" element={<NotFound />}/>
     </Routes>
   );
 };
