@@ -1,6 +1,5 @@
 import Layout from './Layout.jsx';
 import ReturnButton from './ReturnButton.jsx';
-import formStyles from '../styles/Form.module.css';
 import styles from '../styles/FilledForm.module.css';
 import layout from '../styles/Layout.module.css';
 
@@ -8,7 +7,7 @@ const FilledForm = (props) => {
   const { name, surname, birthday, phone, website, personal, techStack, lastProject } = props.state;
   return (
     <Layout>
-      <div className={formStyles.contentHeader}>
+      <div className={layout.contentHeader}>
         <ReturnButton />
         { name.value !== ''
         ? <h1 className={layout.title}>{`${name.value} ${surname.value}`}</h1>

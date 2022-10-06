@@ -79,7 +79,7 @@ const Form = ({ values, setValues }) => {
     <>
       { isValid ? <Navigate to="/info" /> : (
       <Layout>
-        <div className={styles.contentHeader}>
+        <div className={layout.contentHeader}>
           <ReturnButton />
           <h1 className={layout.title}>Cоздание анкеты</h1>
         </div>
