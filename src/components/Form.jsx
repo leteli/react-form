@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import Layout from './Layout.jsx';
-import FilledForm from './FilledForm.jsx';
 import FormInput from './FormInput.jsx';
 import MultiLineInput from './MultiLineInput.jsx';
 import ButtonGroup from './ButtonGroup.jsx';
@@ -12,12 +12,12 @@ import layout from '../styles/Layout.module.css';
 import validate, { validateTextarea, isTextarea, validateTextareaOnSubmit } from '../validate.js';
 import phoneOutputFormat from '../phoneFormat.js';
 
-const Form = () => {
+const Form = ({ values, setValues }) => {
   const initialData = {value: '', isValid: null, message: null };
-  const inputNames = ['name', 'surname', 'birthday', 'phone', 'website', 'personal', 'techStack', 'lastProject'];
-  const initialState = {};
-  inputNames.forEach((name) => initialState[name] = { ...initialData });
-  const [values, setValues] = useState(initialState);
+  // const inputNames = ['name', 'surname', 'birthday', 'phone', 'website', 'personal', 'techStack', 'lastProject'];
+  // const initialState = {};
+  // inputNames.forEach((name) => initialState[name] = { ...initialData });
+  // const [values, setValues] = useState(initialState);
 
   const [isValid, setValidity] = useState(null);
 
@@ -77,13 +77,11 @@ const Form = () => {
   
   return (
     <>
-      { isValid ? <FilledForm state={values} /> : (
+      { isValid ? <Navigate to="/info" /> : (
       <Layout>
         <div className={styles.contentHeader}>
           <ReturnButton />
-          <div className={styles.titleWrapper}>
-            <h1 className={layout.title}>Cоздание анкеты</h1>
-          </div>
+          <h1 className={layout.title}>Cоздание анкеты</h1>
         </div>
         <form
           onSubmit={handleFormSubmit}
