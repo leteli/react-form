@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
-import FilledForm from './FilledForm.jsx';
+import { Navigate } from 'react-router-dom';
+import Layout from './Layout.jsx';
 import FormInput from './FormInput.jsx';
 import MultiLineInput from './MultiLineInput.jsx';
 import ButtonGroup from './ButtonGroup.jsx';
-import styles from './styles/App.module.css';
-import validate, { validateTextarea, isTextarea, validateTextareaOnSubmit } from './validate.js';
-import phoneOutputFormat from './phoneFormat.js';
+import ReturnButton from './ReturnButton.jsx';
 
-const App = () => {
+import styles from '../styles/Form.module.css';
+import layout from '../styles/Layout.module.css';
+
+import validate, { validateTextarea, isTextarea, validateTextareaOnSubmit } from '../validate.js';
+import phoneOutputFormat from '../phoneFormat.js';
+
+const Form = ({ values, setValues }) => {
   const initialData = {value: '', isValid: null, message: null };
-  const inputNames = ['name', 'surname', 'birthday', 'phone', 'website', 'personal', 'techStack', 'lastProject'];
-  const initialState = {};
-  inputNames.forEach((name) => initialState[name] = { ...initialData });
-  const [values, setValues] = useState(initialState);
+  // const inputNames = ['name', 'surname', 'birthday', 'phone', 'website', 'personal', 'techStack', 'lastProject'];
+  // const initialState = {};
+  // inputNames.forEach((name) => initialState[name] = { ...initialData });
+  // const [values, setValues] = useState(initialState);
 
   const [isValid, setValidity] = useState(null);
 
@@ -71,10 +76,13 @@ const App = () => {
   };
   
   return (
-    <div className={styles.container}>
-      { isValid ? <FilledForm state={values} className={styles.content} /> : (
-      <div className={styles.content}>
-        <h1 className={styles.title}>Cоздание анкеты</h1>
+    <>
+      { isValid ? <Navigate to="/react-form/info" /> : (
+      <Layout>
+        <div className={layout.contentHeader}>
+          <ReturnButton />
+          <h1 className={layout.title}>Cоздание анкеты</h1>
+        </div>
         <form
           onSubmit={handleFormSubmit}
           onReset={handleFormReset}
@@ -91,10 +99,10 @@ const App = () => {
           <MultiLineInput inputHandler={handleChange} state={values.lastProject} name="lastProject" label="Описание последнего проекта" placeholder="Я реализовала..." />
           <ButtonGroup />
         </form>
-      </div>
+      </Layout>
       )}
-    </div>
+    </>
   );
 };
 
-export default App;
+export default Form;
