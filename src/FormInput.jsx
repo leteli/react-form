@@ -1,21 +1,22 @@
 import React from 'react';
 import styles from './styles/FormInput.module.css';
 
-class FormInput extends React.Component {
-  render() {
-    return (
-      <>
-        <label htmlFor={this.props.name}>{this.props.label}</label>
-        <input
-          className={styles.input}
-          type={this.props.type ?? "text"}
-          id={this.props.name}
-          name={this.props.name}
-          placeholder={this.props.placeholder}
-        />
-      </>
-    );
-  }
-}
+const FormInput = (props) => {
+  return (
+    <>
+      <label className={styles.label} htmlFor={props.name}>{props.label}</label>
+      <input
+        onChange={props.inputHandler}
+        value={props.state.value}
+        className={props.state.isValid === false ? styles.invalidInput : styles.input}
+        type={props.type ?? "text"}
+        id={props.name}
+        name={props.name}
+        placeholder={props.placeholder}
+      />
+      { props.state.isValid === false ? <div className={styles.invalid}>{ props.state.message }</div> : null }
+    </>
+  );
+};
 
 export default FormInput;
